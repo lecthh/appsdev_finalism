@@ -32,7 +32,7 @@ import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.compon
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-
+    //test commit to branch
     AngularFireAuthModule,
     
     provideFirebaseApp(() => initializeApp({"projectId":"appsdev-80d9f","appId":"1:805621516796:web:7e7ea46803a464dea40a79","storageBucket":"appsdev-80d9f.appspot.com","apiKey":"AIzaSyBBpAH2NTjxNFTAISiE1-2YBs_HzFBbLYc","authDomain":"appsdev-80d9f.firebaseapp.com","messagingSenderId":"805621516796"})),
