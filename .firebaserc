@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "appsdev-80d9f": {
+      "hosting": {
+        "student-sys": [
+          "appsdev-80d9f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "appsdev-80d9f"
+  }
+}

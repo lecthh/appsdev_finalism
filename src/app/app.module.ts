@@ -12,7 +12,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import {AngularFireModule} from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
+
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.compon
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
 
     AngularFireAuthModule,
