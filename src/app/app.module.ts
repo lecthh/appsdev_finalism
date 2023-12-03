@@ -16,6 +16,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
 
+//firebase test
 
 @NgModule({
   declarations: [
