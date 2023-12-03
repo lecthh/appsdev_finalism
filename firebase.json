@@ -1,1 +1,9 @@
-{}
+{
+  "hosting": [
+    {
+      "target": "student-sys",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
