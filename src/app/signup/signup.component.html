@@ -1,0 +1,93 @@
+<div class="flex-col bg-gradient-to-r from-red-500 to-red-900 w-full min-h-screen items-center justify-center">
+    <div class="w-full py-8">
+        <div class="flex items-center justify-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-16 h-16">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+            </svg>   
+            <h1 class="font-bold text-3xl text-zinc-50">RadiantHub Academy</h1>
+        </div>
+
+        <div class="bg-zinc-50 w-5/6 md:w-3/4 lg:w-2/3 xl:w-[500px] 2xl:w-[550px] mt-8 mx-auto px-16 py-8 shadow-2xl">
+            <h2 class="text-center text-xl font-bold text-gray-800 tracking-wide">Sign Up</h2>
+            <p class="text-center mt-2">Already have an account?<a routerLink="" class="link-underline link-underline-black link-underline-hover text-red-500 ml-2 cursor-pointer">Sign in here.</a></p>
+
+            <form class="my-8 text-sm">
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">Name</label>
+                    <div class="flex">
+                        <input type="text" class="mt-2 p-2 flex-grow border border-gray-300 focus:outline-none focus:ring-0" placeholder="First name">
+                        <input type="text" class="mt-2 ml-3 flex-grow p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Last name">
+                    </div>
+                </div>
+
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">Student Number and Year Level</label>
+                    <div class="flex">
+                        <input type="number" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
+                        <select class="flex-grow mt-2 ml-3 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                            <option value="scs">1st Year</option>
+                            <option value="scs">2nd Year</option>
+                            <option value="scs">3rd Year</option>
+                            <option value="scs">4th Year</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">Email address</label>
+                    <div class="flex">
+                        <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
+                    </div>
+                </div>
+
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">College</label>
+                    <div class="flex">
+                        <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                            <option value="scs">School of Computer Studies</option>
+                            <option value="sed">School of Education</option>
+                            <option value="soe">School of Engineering</option>
+                            <option value="sbm">School of Business Management</option>
+                            <option value="sas">School of Arts and Sciences</option>
+                            <option value="sams">School of Allied Medical Sciences</option>
+                        </select>
+                        <!-- <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your college"> -->
+                    </div>
+                </div>
+
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">Program</label>
+                    <div class="flex">
+                        <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
+                            <option value="scs">School of Computer Studies</option>
+                            <option value="sed">School of Education</option>
+                            <option value="soe">School of Engineering</option>
+                            <option value="sbm">School of Business Management</option>
+                            <option value="sas">School of Arts and Sciences</option>
+                            <option value="sams">School of Allied Medical Sciences</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col my-4">
+                    <label for="" class="text-gray-800">Password</label>
+                    <div class="flex">
+                        <input type="password" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your password">
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input type="checkbox" name="remember_me" id="remember_me" class="mr-2 focus:ring-0 rounded">
+                    <label for="remember_me" class="text-gray-700">I accept the <a href="#" class="text-red-500 hover:text-red-500 hover:underline">terms</a> and <a href="#" class="text-red-500 hover:text-red-500 hover:underline">privacy policy</a></label>
+                </div>
+
+                <div class="my-4 flex items-center justify-end space-x-4">
+                    <button class="bg-red-500 hover:bg-red-500 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Sign Up</button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
