@@ -12,6 +12,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     SigninComponent,
     SignupComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    DrawerSubjOffComponent
   ],
   imports: [
     BrowserModule,
