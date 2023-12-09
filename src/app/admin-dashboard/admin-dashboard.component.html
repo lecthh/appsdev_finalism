@@ -139,7 +139,10 @@
                 </div>
                 <h1 class="pt-5 pb-3 text-l">Manually register a student account into the system.</h1>
                 </div>
-                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="" data-drawer-show="" data-drawer-placement="bottom" aria-controls="">Add student</button>
+                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" (click)="toggleAccordion('AddStudent')">Add student</button>
+                <div>
+                    <app-add-student *ngIf="activeAccordion === 'AddStudent'"></app-add-student>
+                </div>
             </div>
         </div>        
     </div>

@@ -1,0 +1,63 @@
+<form class="my-8 text-sm">
+    <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">Name</label>
+        <div class="flex">
+            <input type="text" class="mt-2 p-2 flex-grow border border-gray-300 focus:outline-none focus:ring-0" placeholder="First name">
+            <input type="text" class="mt-2 ml-3 flex-grow p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Last name">
+        </div>
+    </div>
+
+    <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">Student Number and Year Level</label>
+        <div class="flex">
+            <input type="number" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter student number">
+            <select class="flex-grow mt-2 ml-3 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                <option value="scs">1st Year</option>
+                <option value="scs">2nd Year</option>
+                <option value="scs">3rd Year</option>
+                <option value="scs">4th Year</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">Email address</label>
+        <div class="flex">
+            <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter email address">
+        </div>
+    </div>
+
+    <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">College</label>
+        <div class="flex">
+            <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                <option value="scs">School of Computer Studies</option>
+                <option value="sed">School of Education</option>
+                <option value="soe">School of Engineering</option>
+                <option value="sbm">School of Business Management</option>
+                <option value="sas">School of Arts and Sciences</option>
+                <option value="sams">School of Allied Medical Sciences</option>
+            </select>
+            <!-- test branch -->
+            <!-- <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your college"> -->
+        </div>
+    </div>
+
+    <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">Program</label>
+        <div class="flex">
+            <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
+                <option value="scs">School of Computer Studies</option>
+                <option value="sed">School of Education</option>
+                <option value="soe">School of Engineering</option>
+                <option value="sbm">School of Business Management</option>
+                <option value="sas">School of Arts and Sciences</option>
+                <option value="sams">School of Allied Medical Sciences</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="my-4 flex items-center justify-end space-x-4">
+        <button class="bg-red-500 hover:bg-red-500 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Add Student</button>
+    </div>
+</form>
