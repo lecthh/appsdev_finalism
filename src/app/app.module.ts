@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EditSubjOffersComponent } from './edit-subj-offers/edit-subj-offers.component';
+import { ViewEnrolleesComponent } from './view-enrollees/view-enrollees.component';
 
 //firebase test
 
@@ -31,6 +32,7 @@ import { EditSubjOffersComponent } from './edit-subj-offers/edit-subj-offers.com
     DashboardComponent,
     AdminDashboardComponent,
     EditSubjOffersComponent,
+    ViewEnrolleesComponent,
   ],
   imports: [
     BrowserModule,
