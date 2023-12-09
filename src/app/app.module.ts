@@ -45,6 +45,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
     MatSidenavModule,
     AngularFireAuthModule,
     
+    AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

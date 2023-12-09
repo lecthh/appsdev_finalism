@@ -1,3 +1,4 @@
+<!-- sigin hover animation -->
 <div class="flex-col bg-gradient-to-r from-red-500 to-red-900 w-full min-h-screen items-center justify-center">
     <div class="w-full py-8">
         <div class="flex items-center justify-center space-x-2">
@@ -15,16 +16,16 @@
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Name</label>
                     <div class="flex">
-                        <input type="text" class="mt-2 p-2 flex-grow border border-gray-300 focus:outline-none focus:ring-0" placeholder="First name">
-                        <input type="text" class="mt-2 ml-3 flex-grow p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Last name">
+                        <input [(ngModel)]="firstName" required name="firstName" type="text" class="mt-2 p-2 flex-grow border border-gray-300 focus:outline-none focus:ring-0" placeholder="First name">
+                        <input [(ngModel)]="lastName" required name="lastName" type="text" class="mt-2 ml-3 flex-grow p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Last name">
                     </div>
                 </div>
 
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Student Number and Year Level</label>
                     <div class="flex">
-                        <input type="number" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
-                        <select class="flex-grow mt-2 ml-3 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                        <input [(ngModel)]="studentNumber" name="studentNumber" required  type="number" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
+                        <select [(ngModel)]="yearLevel" required class="flex-grow mt-2 ml-3 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="yearLevel" id="yearLevel">
                             <option value="scs">1st Year</option>
                             <option value="scs">2nd Year</option>
                             <option value="scs">3rd Year</option>
@@ -36,14 +37,14 @@
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Email address</label>
                     <div class="flex">
-                        <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
+                        <input [(ngModel)]="email" required name="email" type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your email">
                     </div>
                 </div>
 
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">College</label>
                     <div class="flex">
-                        <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                        <select [(ngModel)]="college" required name="college" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
                             <option value="scs">School of Computer Studies</option>
                             <option value="sed">School of Education</option>
                             <option value="soe">School of Engineering</option>
@@ -59,13 +60,9 @@
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Program</label>
                     <div class="flex">
-                        <select class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
-                            <option value="scs">School of Computer Studies</option>
-                            <option value="sed">School of Education</option>
-                            <option value="soe">School of Engineering</option>
-                            <option value="sbm">School of Business Management</option>
-                            <option value="sas">School of Arts and Sciences</option>
-                            <option value="sams">School of Allied Medical Sciences</option>
+                        <select [(ngModel)]="program" required name="program" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
+                            <option value="prog1">prog1</option>
+                            <option value="prog2">prog2</option>
                         </select>
                     </div>
                 </div>
@@ -73,7 +70,7 @@
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Password</label>
                     <div class="flex">
-                        <input type="password" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your password">
+                        <input [(ngModel)]="password" required type="password" name="password" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your password">
                     </div>
                 </div>
 
