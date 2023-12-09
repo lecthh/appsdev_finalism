@@ -19,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { EditSubjOffersComponent } from './edit-subj-offers/edit-subj-offers.component';
 import { ViewEnrolleesComponent } from './view-enrollees/view-enrollees.component';
+import { EditDepartmentsComponent } from './edit-departments/edit-departments.component';
 
 //firebase test
 
@@ -33,6 +34,7 @@ import { ViewEnrolleesComponent } from './view-enrollees/view-enrollees.componen
     AdminDashboardComponent,
     EditSubjOffersComponent,
     ViewEnrolleesComponent,
+    EditDepartmentsComponent,
   ],
   imports: [
     BrowserModule,

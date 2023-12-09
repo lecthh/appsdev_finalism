@@ -123,7 +123,10 @@
                 </div>
                 <h1 class="pt-5 pb-3 text-l">Add a new department or view the available colleges in the school.</h1>
                 </div>
-                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="" data-drawer-show="" data-drawer-placement="bottom" aria-controls="">Edit departments</button>
+                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" (click)="toggleAccordion('EditDepartments')">Edit departments</button>
+                <div>
+                    <app-edit-departments *ngIf="activeAccordion === 'EditDepartments'"></app-edit-departments>
+                </div>
             </div>
 
             <div class="border p-4 pl-7 rounded-r-lg mt-2">
