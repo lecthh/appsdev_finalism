@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,9 +15,14 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
+import { DrawerService } from './drawer.service';
 
 //firebase test
+
+
 
 @NgModule({
   declarations: [
@@ -31,14 +37,15 @@ import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.compon
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    //test commit to branch
+    MatSidenavModule,
     AngularFireAuthModule,
     
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DrawerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

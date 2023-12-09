@@ -91,7 +91,7 @@
                     <h1 class="pt-5 pb-3 text-l">Add new or remove existing subject offerings for each college department</h1>
                 </div>
                 <div class="flex">
-                    <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="drawer-bottom-example" data-drawer-show="drawer-bottom-example" data-drawer-placement="bottom" aria-controls="drawer-bottom-example">Edit subject offers</button>
+                    <button (click)="openDrawer('drawer-subj-off')" class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" aria-controls="drawer-bottom-example">Edit subject offers</button>
                  </div>
             </div>
  
@@ -106,7 +106,7 @@
                     <h1 class="pt-5 pb-3 text-l">View the list of total enrollees registered for this school term.</h1>
                 </div>
                 <div class="flex">
-                    <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="drawer-bottom-example" data-drawer-show="drawer-bottom-example" data-drawer-placement="bottom" aria-controls="drawer-bottom-example">View enrollees</button>
+                    <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="" data-drawer-show="" data-drawer-placement="bottom" aria-controls="">View enrollees</button>
                  </div>
             </div>
 
@@ -120,7 +120,7 @@
                 </div>
                 <h1 class="pt-5 pb-3 text-l">Add a new department or view the available colleges in the school.</h1>
                 </div>
-                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="drawer-bottom-example" data-drawer-show="drawer-bottom-example" data-drawer-placement="bottom" aria-controls="drawer-bottom-example">Edit departments</button>
+                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="" data-drawer-show="" data-drawer-placement="bottom" aria-controls="">Edit departments</button>
             </div>
 
             <div class="border p-4 pl-7 rounded-r-lg mt-2">
@@ -133,117 +133,7 @@
                 </div>
                 <h1 class="pt-5 pb-3 text-l">Manually register a student account into the system.</h1>
                 </div>
-                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="drawer-bottom-example" data-drawer-show="drawer-bottom-example" data-drawer-placement="bottom" aria-controls="drawer-bottom-example">Add student</button>
-            </div>
-        </div>
-
-        <div id="drawer-bottom-example" class="min-h-fit rounded-lg mt-8 bottom-0 left-0 right-0 z-40 w-full p-4 overflow-y-auto transition-transform bg-zinc-50  border-2 transform-none" tabindex="-1" aria-labelledby="drawer-bottom-label">
-            <div class="flex justify-between">
-                <h3 id="drawer-bottom-label" class="inline-flex items-center mb-4 text-2xl font-semibold text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2">
-                    <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47a.75.75 0 001-.708V4.262a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v16.103z" />
-                </svg>Edit subject offer</h3>
-                <button type="button" data-drawer-hide="drawer-bottom-example" aria-controls="drawer-bottom-example" class="text-slate-900 bg-transparent hover:bg-slate-300 rounded-lg text-sm w-8 h-8 top-2.5 end-2.5 inline-flex items-center justify-center" >
-                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                  </svg>
-                  <span class="sr-only">Close menu</span>
-               </button>
-            </div>
-            <div class="flex flex-col my-4">
-                <label for="" class="text-slate-900">College</label>
-                <div class="flex">
-                    <select class="flex-grow mt-2 p-2 rounded border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
-                        <option value="scs">School of Computer Studies</option>
-                        <option value="sed">School of Education</option>
-                        <option value="soe">School of Engineering</option>
-                        <option value="sbm">School of Business Management</option>
-                        <option value="sas">School of Arts and Sciences</option>
-                        <option value="sams">School of Allied Medical Sciences</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-zinc-50 uppercase border border-slate-900 bg-slate-900">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Subject
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Code
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border border-slate-900">
-                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
-                                Data Structures and Algorithms
-                            </th>
-                            <td class="px-6 py-4 text-slate-900">
-                                DSA
-                            </td>
-                            <td class="px-6 py-4 text-slate-900">
-                                <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2 cursor-pointer">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 cursor-pointer">
-                                        <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
-                                    </svg>                                      
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border border-slate-900">
-                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
-                                Technopreneurship
-                            </th>
-                            <td class="px-6 py-4 text-slate-900">
-                                Techno
-                            </td>
-                            <td class="px-6 py-4 text-slate-900">
-                                <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2 cursor-pointer">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 cursor-pointer">
-                                        <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
-                                    </svg>                                      
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="border border-slate-900">
-                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
-                                Information Assurance and Security 1
-                            </th>
-                            <td class="px-6 py-4 text-slate-900">
-                                IAS 1
-                            </td>
-                            <td class="px-6 py-4 text-slate-900">
-                                <div class="flex">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 mr-2 cursor-pointer">
-                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
-                                        <path d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
-                                    </svg>
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 cursor-pointer">
-                                        <path fill-rule="evenodd" d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z" clip-rule="evenodd" />
-                                    </svg>                                      
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr class="font-semibold text-gray-900 dark:text-white">
-                            <th scope="row" class="px-6 py-3 text-base">Total</th>
-                            <td class="px-6 py-3">3</td>
-                            <td class="px-6 py-3">21,000</td>
-                        </tr>
-                    </tfoot>
-                </table>
+                <button class="text-white bg-slate-900 hover:bg-red-500 font-medium rounded-lg text-sm px-5 py-2.5 mb-2" type="button" data-drawer-target="" data-drawer-show="" data-drawer-placement="bottom" aria-controls="">Add student</button>
             </div>
         </div>        
     </div>
