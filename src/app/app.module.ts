@@ -17,8 +17,6 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
-import { DrawerService } from './drawer.service';
 
 //firebase test
 
@@ -31,7 +29,6 @@ import { DrawerService } from './drawer.service';
     SignupComponent,
     DashboardComponent,
     AdminDashboardComponent,
-    DrawerSubjOffComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +42,6 @@ import { DrawerService } from './drawer.service';
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
   ],
-  providers: [DrawerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
