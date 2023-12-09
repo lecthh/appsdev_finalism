@@ -17,6 +17,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { EditSubjOffersComponent } from './edit-subj-offers/edit-subj-offers.component';
 
 //firebase test
 
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SignupComponent,
     DashboardComponent,
     AdminDashboardComponent,
+    EditSubjOffersComponent,
   ],
   imports: [
     BrowserModule,

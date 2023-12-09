@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
+  activeAccordion: string | null = null;
 
+  toggleAccordion(accordion: string): void {
+    this.activeAccordion = this.activeAccordion === accordion ? null : accordion;
+  }
 }
