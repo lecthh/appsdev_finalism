@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +19,7 @@ export class SignupComponent {
   college = '';
   program = '';
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
 
   signup(): void {
     const addtlData = {
@@ -29,11 +31,13 @@ export class SignupComponent {
     }
 
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password).then((userCredential) => {
-      return userCredential.user?.updateProfile(addtlData);
+      const user = userCredential.user;
+
+      return this.afs.collection('users').doc(user?.uid).set(addtlData);
     })
     .then(() => {
       console.log("Student registered: ", this.afAuth.currentUser);
-      this.router.navigate(['/sigin']);
+      this.router.navigate(['/signin']);
     })
     .catch((error) => {
       console.log('Registration error: ', error.message);

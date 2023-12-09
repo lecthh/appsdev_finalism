@@ -43,6 +43,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
     AppRoutingModule,
     FormsModule,
     MatSidenavModule,
+    
     AngularFireAuthModule,
     
     AngularFireModule.initializeApp(environment.firebase),
