@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerSubjOffComponent } from './drawer-subj-off/drawer-subj-off.component';
 import { DrawerService } from './drawer.service';
 
+//firebase test
 
 
 
@@ -35,13 +36,11 @@ import { DrawerService } from './drawer.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     MatSidenavModule,
-
     AngularFireAuthModule,
     
-    provideFirebaseApp(() => initializeApp({"projectId":"appsdev-80d9f","appId":"1:805621516796:web:7e7ea46803a464dea40a79","storageBucket":"appsdev-80d9f.appspot.com","apiKey":"AIzaSyBBpAH2NTjxNFTAISiE1-2YBs_HzFBbLYc","authDomain":"appsdev-80d9f.firebaseapp.com","messagingSenderId":"805621516796"})),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     BrowserAnimationsModule
