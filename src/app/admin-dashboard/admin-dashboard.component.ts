@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DrawerService } from '../drawer.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -6,15 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent {
-  
-  //subject offer
-  isSubjOfferOpen = false;
+  constructor(private drawerService: DrawerService) {}
 
-  openSubjOffer() {
-    this.isSubjOfferOpen = true;
-  }
-
-  closeSubjOffer() {
-    this.isSubjOfferOpen = false;
+  openDrawer(drawerKey: string) {
+    console.log('Opening drawer with key:', drawerKey);
+    this.drawerService.openDrawer(drawerKey);
   }
 }

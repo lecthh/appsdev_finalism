@@ -11,7 +11,7 @@ export class DrawerSubjOffComponent implements OnDestroy{
   private subscription: Subscription;
 
   constructor(private drawerService: DrawerService) {
-    this.subscription = this.drawerService.getDrawerState('drawer1').subscribe((isOpen) => {
+    this.subscription = this.drawerService.getDrawerState('drawer-subj-off').subscribe((isOpen) => {
       // Handle the drawer state change (open/close) for drawer 1
     });
   }
