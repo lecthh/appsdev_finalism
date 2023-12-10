@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,13 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
 
+  getCurrentUserName(): Observable<string> {
+    return this.afAuth.authState.pipe(
+      map(user => user?.displayName || 'User') // Returns the displayName or 'User' if not available
+    );
+  }
+
+  //authentication tings
   signIn(email: string, password: string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
@@ -47,8 +55,7 @@ export class AuthService {
   
   signOut(): void {
     this.afAuth.signOut().then(() => {
-      console.log("User signed out successfully");
-      this.router.navigate(['/signin']);
+      console.log("User signed out successfully: " ,this.afAuth.currentUser);
     }).catch((error) => {
       console.error("Error signing out: ", error);
     });
