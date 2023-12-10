@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Auth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-signin',
@@ -8,4 +7,12 @@ import { Auth } from '@angular/fire/auth';
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-}
+  email = '';
+  password = '';
+
+  constructor(private authService: AuthService) {}
+
+  signin(): void {
+    this.authService.signIn(this.email.trim(), this.password);
+  }
+ }

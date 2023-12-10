@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
   yearLevel = '';
   college = '';
   program = '';
+  isAdmin = false;
 
   colleges!: Observable<any[]>;
   programs!: Observable<any[]>;
