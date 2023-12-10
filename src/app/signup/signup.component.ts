@@ -17,6 +17,7 @@ export class SignupComponent {
   yearLevel = '';
   college = '';
   program = '';
+  isAdmin = false;
 
   constructor(private authService: AuthService) {}
 
@@ -26,7 +27,8 @@ export class SignupComponent {
       studentNumber: this.studentNumber,
       yearLevel: this.yearLevel,
       college: this.college,
-      program: this.program
+      program: this.program,
+      isAdmin: this.isAdmin,
     }
   
     this.authService.signUp(this.email, this.password, addtlData);

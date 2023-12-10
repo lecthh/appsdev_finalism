@@ -13,7 +13,7 @@ export class AuthService {
 
   getCurrentUserName(): Observable<string> {
     return this.afAuth.authState.pipe(
-      map(user => user?.displayName || 'User') // Returns the displayName or 'User' if not available
+      map(user => user?.displayName || 'User')
     );
   }
 
