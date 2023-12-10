@@ -76,18 +76,35 @@ export class SignupComponent implements OnInit {
       college: this.college,
       program: this.program
     };
-
-    this.afAuth.createUserWithEmailAndPassword(this.email, this.password).then((userCredential) => {
-      const user = userCredential.user;
-
-      return this.afs.collection('users').doc(user?.uid).set(addtlData);
-    })
-    .then(() => {
-      console.log("Student registered: ", this.afAuth.currentUser);
-      this.router.navigate(['/signin']);
-    })
-    .catch((error) => {
-      console.log('Registration error: ', error.message);
-    });
+  
+    this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+  
+        return this.afs.collection('users').doc(user?.uid).set(addtlData);
+      })
+      .then(() => {
+        console.log("Student registered: ", this.afAuth.currentUser);
+        this.router.navigate(['/signin']);
+      })
+      .catch((error) => {
+        console.log('Registration error: ', error.message);
+  
+        // Handle specific error cases and show appropriate messages
+        if (error.code === 'auth/email-already-in-use') {
+          // Email is already in use
+          alert('Email is already in use. Please use a different email.');
+        } else if (error.code === 'auth/weak-password') {
+          // Weak password
+          alert('Password is too weak. Please choose a stronger password.');
+        } else if (error.code === 'auth/invalid-email' || error.code === 'auth/argument-error') {
+          // Invalid email format
+          alert('Invalid email format. Please enter a valid email.');
+        } else {
+          // Generic error message for other cases
+          alert('An error occurred during registration. Please try again.');
+        }
+      });
   }
+  
 }

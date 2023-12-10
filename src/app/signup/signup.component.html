@@ -45,21 +45,24 @@
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">College</label>
                     <div class="flex">
-                      <select [(ngModel)]="college" (change)="onCollegeSelected()" required name="college" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                    <select [(ngModel)]="college" (change)="onCollegeSelected()" required name="college" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                        <option value="" disabled selected>Select a College</option>
                         <option *ngFor="let college of colleges | async" [value]="college.value">{{ college.label }}</option>
-                      </select>
+                    </select>
                     </div>
-                  </div>
-                  
+                </div>
+                
                 <!-- Programs -->
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Program</label>
                     <div class="flex">
                     <select [(ngModel)]="program" required name="program" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
+                        <option value="" disabled selected>Select a Program</option>
                         <option *ngFor="let program of programs | async" [value]="program.value">{{ program.label }}</option>
                     </select>
                     </div>
                 </div>
+  
                 
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Password</label>
