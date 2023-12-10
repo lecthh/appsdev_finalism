@@ -26,10 +26,10 @@
                     <div class="flex">
                         <input [(ngModel)]="studentNumber" name="studentNumber" required  type="number" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your student number">
                         <select [(ngModel)]="yearLevel" required class="flex-grow mt-2 ml-3 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="yearLevel" id="yearLevel">
-                            <option value="scs">1st Year</option>
-                            <option value="scs">2nd Year</option>
-                            <option value="scs">3rd Year</option>
-                            <option value="scs">4th Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
                         </select>
                     </div>
                 </div>
@@ -41,32 +41,26 @@
                     </div>
                 </div>
 
+                <!-- Colleges -->
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">College</label>
                     <div class="flex">
-                        <select [(ngModel)]="college" required name="college" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
-                            <option value="scs">School of Computer Studies</option>
-                            <option value="sed">School of Education</option>
-                            <option value="soe">School of Engineering</option>
-                            <option value="sbm">School of Business Management</option>
-                            <option value="sas">School of Arts and Sciences</option>
-                            <option value="sams">School of Allied Medical Sciences</option>
-                        </select>
-                        <!-- test branch -->
-                        <!-- <input type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Enter your college"> -->
+                      <select [(ngModel)]="college" (change)="onCollegeSelected()" required name="college" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="college" id="college">
+                        <option *ngFor="let college of colleges | async" [value]="college.value">{{ college.label }}</option>
+                      </select>
                     </div>
-                </div>
-
+                  </div>
+                  
+                <!-- Programs -->
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Program</label>
                     <div class="flex">
-                        <select [(ngModel)]="program" required name="program" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
-                            <option value="prog1">prog1</option>
-                            <option value="prog2">prog2</option>
-                        </select>
+                    <select [(ngModel)]="program" required name="program" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" name="program" id="program">
+                        <option *ngFor="let program of programs | async" [value]="program.value">{{ program.label }}</option>
+                    </select>
                     </div>
                 </div>
-
+                
                 <div class="flex flex-col my-4">
                     <label for="" class="text-gray-800">Password</label>
                     <div class="flex">
