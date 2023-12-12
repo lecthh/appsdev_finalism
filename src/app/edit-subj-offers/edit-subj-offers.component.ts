@@ -65,5 +65,20 @@ export class EditSubjOffersComponent implements OnInit {
   onCollegeChange(): void {
     this.fetchSubjects();
   }
-  
+
+  showEditModal: boolean = false;
+  selectedSubjectForEdit: any = null;
+
+  openEditModal(subject: any): void {
+    console.log("Opening modal for subject:", subject);
+    this.selectedSubjectForEdit = { ...subject };
+    this.showEditModal = true;
+  }
+
+  onSubjectUpdate(updatedSubject: any): void {
+    if (!updatedSubject) {
+      this.showEditModal = false;
+      return;
+    }
+  }
 }

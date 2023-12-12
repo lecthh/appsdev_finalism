@@ -23,6 +23,7 @@ import { EditDepartmentsComponent } from './edit-departments/edit-departments.co
 import { AddStudentComponent } from './add-student/add-student.component';
 import { StudentProspectusComponent } from './student-prospectus/student-prospectus.component';
 import { StudentEnrollmentComponent } from './student-enrollment/student-enrollment.component';
+import { EditSubjModalComponent } from './edit-subj-modal/edit-subj-modal.component';
 
 //firebase test
 
@@ -41,6 +42,7 @@ import { StudentEnrollmentComponent } from './student-enrollment/student-enrollm
     AddStudentComponent,
     StudentProspectusComponent,
     StudentEnrollmentComponent,
+    EditSubjModalComponent,
   ],
   imports: [
     BrowserModule,
