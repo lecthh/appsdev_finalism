@@ -21,6 +21,7 @@ import { EditSubjOffersComponent } from './edit-subj-offers/edit-subj-offers.com
 import { ViewEnrolleesComponent } from './view-enrollees/view-enrollees.component';
 import { EditDepartmentsComponent } from './edit-departments/edit-departments.component';
 import { AddStudentComponent } from './add-student/add-student.component';
+import { StudentProspectusComponent } from './student-prospectus/student-prospectus.component';
 
 //firebase test
 
@@ -37,6 +38,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
     ViewEnrolleesComponent,
     EditDepartmentsComponent,
     AddStudentComponent,
+    StudentProspectusComponent,
   ],
   imports: [
     BrowserModule,
