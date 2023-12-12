@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -11,14 +10,10 @@ export class SigninComponent {
   email = '';
   password = '';
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {}
+  constructor(private authService: AuthService) {}
 
   signin(): void {
-    this.afAuth.signInWithEmailAndPassword(this.email, this.password)
-      .then(() => {
-        console.log('User signed in successfully!');
-        this.router.navigate(['/dashboard']);
-      })
+    this.authService.signIn(this.email, this.password)
       .catch((error) => {
         console.log('Signin error: ', error.message);
 
@@ -30,3 +25,4 @@ export class SigninComponent {
       });
   }
 }
+

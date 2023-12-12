@@ -4,9 +4,14 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 
+interface UserData {
+  isAdmin?: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
@@ -20,18 +25,35 @@ export class AuthService {
     );
   }
   
-
   //authentication tings
   signIn(email: string, password: string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        console.log('User signed in:', userCredential.user);
-        this.router.navigate(['/dashboard']);
+      .then(userCredential => {
+        const user = userCredential.user;
+        if (user) {
+          return this.afs.collection('users').doc(user.uid).get().toPromise()
+            .then(docSnapshot => {
+              if (docSnapshot && docSnapshot.exists) {
+                const userData = docSnapshot.data() as UserData;
+                if (userData.isAdmin) {
+                  this.router.navigate(['/admin-dashboard']);
+                } else {
+                  this.router.navigate(['/dashboard']);
+                }
+              } else {
+                throw new Error('User data not found');
+              }
+            });
+        } else {
+          throw new Error('User not found');
+        }
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('Sign-in error:', error.message);
       });
   }
+  
+  
 
   signUp(email: string, password: string, additionalData: any): Promise<void> {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
