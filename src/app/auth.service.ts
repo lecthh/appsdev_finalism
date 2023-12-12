@@ -16,10 +16,14 @@ export class AuthService {
   }
 
   getCurrentUserName(): Observable<string> {
-    return this.getCurrentUser().pipe(
-      map(user => user?.displayName || 'User')
+    return this.afAuth.authState.pipe(
+      map(user => {
+        console.log('Auth State User:', user);
+        return user?.displayName || 'User';
+      })
     );
   }
+  
 
   //authentication tings
   signIn(email: string, password: string): Promise<void> {

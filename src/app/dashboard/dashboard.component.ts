@@ -3,6 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   userName$!: Observable<string>;
   displayNameFirstHalf: string = '';
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.userName$ = this.authService.getCurrentUserName();
@@ -27,4 +28,10 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  goToProspectus(): void {
+    this.router.navigate(['/student-prospectus']);
+  }
+
+  
 }

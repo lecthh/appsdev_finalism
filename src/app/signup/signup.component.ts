@@ -93,32 +93,35 @@ export class SignupComponent implements OnInit {
     };
 
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-
-        return this.afs.collection('users').doc(user?.uid).set(addtlData);
-      })
-      .then(() => {
-        console.log("Student registered: ", this.afAuth.currentUser);
-        this.router.navigate(['/signin']);
-      })
-      .catch((error) => {
-        console.log('Registration error: ', error.message);
-
-        // Handle specific error cases and show appropriate messages
-        if (error.code === 'auth/email-already-in-use') {
-          // Email is already in use
-          alert('Email is already in use. Please use a different email.');
-        } else if (error.code === 'auth/weak-password') {
-          // Weak password
-          alert('Password is too weak. Please choose a stronger password.');
-        } else if (error.code === 'auth/invalid-email' || error.code === 'auth/argument-error') {
-          // Invalid email format
-          alert('Invalid email format. Please enter a valid email.');
-        } else {
-          // Generic error message for other cases
-          alert('An error occurred during registration. Please try again.');
-        }
-      });
+    .then((userCredential) => {
+      const user = userCredential.user;
+      if (user) {
+        return user.updateProfile({
+          displayName: `${this.firstName} ${this.lastName}`
+        }).then(() => {
+          return this.afs.collection('users').doc(user.uid).set(addtlData);
+        });
+      } else {
+        throw new Error("User not found after sign-up");
+      }
+    })
+    .then(() => {
+      console.log("Student registered:", this.afAuth.currentUser);
+      this.router.navigate(['/signin']);
+    })
+    .catch((error) => {
+      console.error('Registration error:', error);
+      // Here you can handle specific error codes and display appropriate messages
+      if (error.code === 'auth/email-already-in-use') {
+        alert('The email address is already in use by another account.');
+      } else if (error.code === 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else if (error.code === 'auth/invalid-email') {
+        alert('The email address is invalid.');
+      } else {
+        // General error message
+        alert('An error occurred during registration. Please try again.');
+      }
+    });
   }
 }
