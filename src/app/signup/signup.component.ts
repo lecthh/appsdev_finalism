@@ -89,7 +89,8 @@ export class SignupComponent implements OnInit {
       password: this.password,
       yearLevel: this.yearLevel,
       college: this.college,
-      program: this.program
+      program: this.program,
+      isAdmin: this.isAdmin
     };
 
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
