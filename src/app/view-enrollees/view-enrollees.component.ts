@@ -40,16 +40,16 @@ export class ViewEnrolleesComponent implements OnInit {
 
   fetchEnrollees(collegeDocument: string): Observable<any[]> {
     console.log('Fetching enrollees for college:', collegeDocument);
-    return this.afs.collection('users', ref => ref.where('College', '==', collegeDocument))
+    return this.afs.collection('users', ref => ref.where('college', '==', collegeDocument))
       .snapshotChanges().pipe(
         map((enrollees: any[]) => {
           console.log('Enrollees data:', enrollees);
           return enrollees.map(enrollee => {
             const data = enrollee.payload.doc.data();
             return {
-              displayName: data.displayName,
-              yearLevel: data.yearLevel,
-              program: data.program
+              displayName: data.displayName, // Assuming the field is 'name' in your document
+              yearLevel: data.yearLevel, // Adjust this based on your actual data
+              program: data.program // Adjust this based on your actual data
             };
           });
         }),
@@ -59,6 +59,7 @@ export class ViewEnrolleesComponent implements OnInit {
         })
       );
   }
+  
   
   
 }
