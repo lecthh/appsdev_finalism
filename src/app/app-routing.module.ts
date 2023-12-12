@@ -12,7 +12,7 @@ const routes: Routes = [
   {path:'', redirectTo:'signin', pathMatch:'full'},
   {path:'signin', component: SigninComponent},
   {path:'signup', component: SignupComponent},
-  {path:'admin-dashboard', component: AdminDashboardComponent},
+  {path:'admin-dashboard', component: AdminDashboardComponent, canActivate: [authGuard]},
   {path:'dashboard', component: DashboardComponent, canActivate: [authGuard]},
   {path: 'student-prospectus', component: StudentProspectusComponent, canActivate: [authGuard]},
   {path: 'student-enrollment', component: StudentEnrollmentComponent, canActivate: [authGuard]},
