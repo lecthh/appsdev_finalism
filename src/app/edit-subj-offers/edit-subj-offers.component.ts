@@ -42,11 +42,9 @@ export class EditSubjOffersComponent implements OnInit {
     this.afs.collection('Subjects').doc(subjectId).update({ name: updatedName, code: updatedCode })
       .then(() => {
         console.log('Subject updated successfully');
-        // Handle successful update
       })
       .catch(error => {
         console.error('Error updating subject:', error);
-        // Handle the error
       });
   }
 
@@ -54,11 +52,9 @@ export class EditSubjOffersComponent implements OnInit {
     this.afs.collection('Subjects').doc(subjectId).delete()
       .then(() => {
         console.log('Subject deleted successfully');
-        // Handle successful deletion
       })
       .catch(error => {
         console.error('Error deleting subject:', error);
-        // Handle the error
       });
   }
 
