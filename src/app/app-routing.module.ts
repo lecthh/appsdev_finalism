@@ -5,6 +5,7 @@ import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { StudentProspectusComponent } from './student-prospectus/student-prospectus.component';
+import { StudentEnrollmentComponent } from './student-enrollment/student-enrollment.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'signin', pathMatch:'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path:'admin-dashboard', component: AdminDashboardComponent},
   {path:'dashboard', component: DashboardComponent},
   {path: 'student-prospectus', component: StudentProspectusComponent},
+  {path: 'student-enrollment', component: StudentEnrollmentComponent},
 ];
 
 @NgModule({

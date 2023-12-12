@@ -11,10 +11,6 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore, private router: Router) {}
 
-  getCurrentUser(): Observable<any> {
-    return this.afAuth.authState;
-  }
-
   getCurrentUserName(): Observable<string> {
     return this.afAuth.authState.pipe(
       map(user => {
