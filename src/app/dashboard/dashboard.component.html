@@ -54,10 +54,12 @@
     <div class="container m-1 p-7">
        <!-- top -->
        <div class="container flex justify-between">
-          <div class="flex flex-col">
-             <h1 class="font-bold text-xl text-slate-900">Welcome back, {{ userName$ | async }} 👋</h1>
-             <p>Here's what you have for the rest of the school year.</p> 
-          </div>
+         <!-- Inside your HTML template -->
+         <div class="flex flex-col">
+            <h1 class="font-bold text-xl text-slate-900">Welcome back, {{ displayNameFirstHalf }} 👋</h1>
+            <p>Here's what you have for the rest of the school year.</p> 
+         </div>
+ 
           <div class="flex">
              <a href="" class="pr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

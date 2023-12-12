@@ -2,8 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+
+interface CollegeData {
+  CollegeName: string;
+}
+
+interface ProgramData {
+  ProgName: string;
+}
 
 @Component({
   selector: 'app-signup',
@@ -33,27 +41,33 @@ export class SignupComponent implements OnInit {
   fetchColleges(): Observable<any[]> {
     return this.afs.collection('Colleges').snapshotChanges().pipe(
       map((colleges: any[]) => {
-        return colleges.map(college => ({
-          value: college.payload.doc.id, 
-          label: college.payload.doc.data()['CollegeName']
-        }));
+        return colleges.map(college => {
+          const data = college.payload.doc.data() as CollegeData;
+          return {
+            value: college.payload.doc.id,
+            label: data.CollegeName
+          };
+        });
       })
     );
   }
-  
+
   fetchPrograms(collegeDocument: string): Observable<any[]> {
     console.log('College Document:', collegeDocument);
-    
+
     const collegeRef = this.afs.collection('Colleges').doc(collegeDocument).ref;
-  
+
     return this.afs.collection('Programs', ref =>
       ref.where('ProgCollege', '==', collegeRef)
-    ).valueChanges().pipe(
+    ).snapshotChanges().pipe(
       map(programs => {
-        return programs.map((program: any) => ({
-          value: program.ProgName,
-          label: program.ProgName
-        }));
+        return programs.map(program => {
+          const data = program.payload.doc.data() as ProgramData;
+          return {
+            value: program.payload.doc.id,
+            label: data.ProgName
+          };
+        });
       }),
       catchError(error => {
         console.error('Error fetching programs:', error);
@@ -61,10 +75,10 @@ export class SignupComponent implements OnInit {
       })
     );
   }
-  
+
   onCollegeSelected(): void {
     console.log('onCollegeSelected called');
-    this.programs = this.fetchPrograms(this.college)
+    this.programs = this.fetchPrograms(this.college);
   }
 
   signup(): void {
@@ -77,11 +91,11 @@ export class SignupComponent implements OnInit {
       college: this.college,
       program: this.program
     };
-  
+
     this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
       .then((userCredential) => {
         const user = userCredential.user;
-  
+
         return this.afs.collection('users').doc(user?.uid).set(addtlData);
       })
       .then(() => {
@@ -90,7 +104,7 @@ export class SignupComponent implements OnInit {
       })
       .catch((error) => {
         console.log('Registration error: ', error.message);
-  
+
         // Handle specific error cases and show appropriate messages
         if (error.code === 'auth/email-already-in-use') {
           // Email is already in use
@@ -107,5 +121,4 @@ export class SignupComponent implements OnInit {
         }
       });
   }
-  
 }
