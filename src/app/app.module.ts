@@ -22,6 +22,7 @@ import { ViewEnrolleesComponent } from './view-enrollees/view-enrollees.componen
 import { EditDepartmentsComponent } from './edit-departments/edit-departments.component';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { StudentProspectusComponent } from './student-prospectus/student-prospectus.component';
+import { StudentEnrollmentComponent } from './student-enrollment/student-enrollment.component';
 
 //firebase test
 
@@ -39,6 +40,7 @@ import { StudentProspectusComponent } from './student-prospectus/student-prospec
     EditDepartmentsComponent,
     AddStudentComponent,
     StudentProspectusComponent,
+    StudentEnrollmentComponent,
   ],
   imports: [
     BrowserModule,
