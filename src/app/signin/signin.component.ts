@@ -17,16 +17,14 @@ export class SigninComponent {
     this.afAuth.signInWithEmailAndPassword(this.email, this.password)
       .then(() => {
         console.log('User signed in successfully!');
-        this.router.navigate(['/dashboard']); // Navigate to the dashboard or any other route after successful signin
+        this.router.navigate(['/dashboard']);
       })
       .catch((error) => {
         console.log('Signin error: ', error.message);
 
         if (error.code === 'auth/too-many-requests') {
-          // Too many unsuccessful login attempts
           alert('Too many unsuccessful login attempts. Please try again later.');
         } else {
-          // Handle other error cases
           alert('Invalid email or password. Please check your credentials.');
         }
       });

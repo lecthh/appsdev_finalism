@@ -112,7 +112,6 @@ export class SignupComponent implements OnInit {
     })
     .catch((error) => {
       console.error('Registration error:', error);
-      // Here you can handle specific error codes and display appropriate messages
       if (error.code === 'auth/email-already-in-use') {
         alert('The email address is already in use by another account.');
       } else if (error.code === 'auth/weak-password') {
@@ -120,7 +119,6 @@ export class SignupComponent implements OnInit {
       } else if (error.code === 'auth/invalid-email') {
         alert('The email address is invalid.');
       } else {
-        // General error message
         alert('An error occurred during registration. Please try again.');
       }
     });
