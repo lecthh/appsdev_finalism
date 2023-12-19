@@ -38,16 +38,6 @@ export class EditSubjOffersComponent implements OnInit {
       });
   }
 
-  editSubject(subjectId: string, updatedName: string, updatedCode: string): void {
-    this.afs.collection('Subjects').doc(subjectId).update({ name: updatedName, code: updatedCode })
-      .then(() => {
-        console.log('Subject updated successfully');
-      })
-      .catch(error => {
-        console.error('Error updating subject:', error);
-      });
-  }
-
   deleteSubject(subjectId: string): void {
     this.afs.collection('Subjects').doc(subjectId).delete()
       .then(() => {

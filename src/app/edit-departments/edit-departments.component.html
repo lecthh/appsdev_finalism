@@ -1,15 +1,21 @@
 <div class="min-h-fit z-40 w-full p-2 overflow-y-auto transition-transform bg-zinc-50 transform-none" tabindex="-1">
     <form (ngSubmit)="submitForm(documentIdInput.value, collegeNameInput.value, abbreviationInput.value)">
-      <input type="text" #documentIdInput placeholder="Document ID">
-      <br>
-      <input type="text" #collegeNameInput placeholder="College Name">
-      <br>
-      <input type="text" #abbreviationInput placeholder="Abbreviation">
-      <br>
-      <button type="submit">Add</button>
+      <label for="" class="text-gray-800">Department</label>
+      <div class="flex">
+          <input #documentIdInput required name="documentId" type="text" class="mt-2 p-2 flex-grow border border-gray-300 focus:outline-none focus:ring-0" placeholder="Docement ID">
+          <input #abbreviationInput required name="abbreviation" type="text" class="mt-2 ml-3 flex-grow p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Abbreviation">
+      </div>
+      <div class="flex flex-col my-4">
+        <label for="" class="text-gray-800">Department Name</label>
+        <div class="flex">
+            <input #collegeNameInput required name="text" type="text" class="flex-grow mt-2 p-2 border border-gray-300 focus:outline-none focus:ring-0" placeholder="Department name">
+        </div>
+      </div>
+      <button class="my-3 bg-red-500 hover:bg-red-500 rounded-lg px-8 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Add Department</button>
     </form>      
+  
     <div class="relative overflow-x-auto">
-      <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+      <table class="my-3 w-full text-sm text-left rtl:text-right text-gray-500">
         <thead class="text-xs text-zinc-50 uppercase border border-slate-900 bg-slate-900">
           <tr>
             <th scope="col" class="px-6 py-3">
