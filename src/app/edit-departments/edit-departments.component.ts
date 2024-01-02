@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-edit-departments',
@@ -11,12 +11,23 @@ export class EditDepartmentsComponent implements OnInit {
 
   colleges!: Observable<any[]>;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private afs: AngularFirestore) {}
 
   ngOnInit() {
-    this.colleges = this.firestore.collection('Colleges').valueChanges();
+    this.colleges = this.fetchColleges();
   }
 
+  fetchColleges(): Observable<any[]> {
+    return this.afs.collection('Colleges').snapshotChanges().pipe(
+      map((colleges: any[]) => {
+        return colleges.map(college => ({
+          value: college.payload.doc.id, 
+          CollegeName: college.payload.doc.data()['CollegeName'],
+          Abbreviation: college.payload.doc.data()['Abbreviation']
+        }));
+      })
+    );
+  }
   async submitForm(documentId: string, collegeName: string, abbreviation: string): Promise<void> {
     
     const docSnapshot = await this.firestore.collection('Colleges').doc(documentId).get().toPromise();
@@ -61,7 +72,11 @@ export class EditDepartmentsComponent implements OnInit {
 
   openEditModal(college: any): void {
     console.log("Opening modal for department:", college);
-    this.selectedDepartmentForEdit = { ...college };
+    this.selectedDepartmentForEdit = { 
+      id: college.value, 
+      CollegeName: college.CollegeName,
+      Abbreviation: college.Abbreviation
+    };
     this.showEditModal = true;
   }
 

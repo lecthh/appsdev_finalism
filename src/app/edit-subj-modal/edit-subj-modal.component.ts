@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-edit-subj-modal',
@@ -13,10 +12,13 @@ export class EditSubjModalComponent {
 
   constructor(private afs: AngularFirestore) {}
 
-  editSubject(subjectId: string, updatedName: string, updatedCode: string): void {
-    this.afs.collection('Subjects').doc(subjectId).update({ name: updatedName, code: updatedCode })
+  editSubject(): void {
+    console.log('Editing sub:', this.subject);
+    const { id, name, code} = this.subject;
+    this.afs.collection('Subjects').doc(id).update({ name, code})
       .then(() => {
         console.log('Subject updated successfully');
+        this.updateSubject.emit({name, code});
       })
       .catch(error => {
         console.error('Error updating subject:', error);

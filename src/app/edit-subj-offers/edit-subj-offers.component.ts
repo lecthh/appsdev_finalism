@@ -48,20 +48,43 @@ export class EditSubjOffersComponent implements OnInit {
       );
   }
   
-
   addSubject(): void {
-    const newSubject = { name: this.subjectName, code: this.subjectCode, college: this.college };
+    // Check if the subjectCode is exactly 5 digits
+    if (!/^\d{5}$/.test(this.subjectCode)) {
+      // Alert the user that the code must be 5 digits
+      alert('Offer Code must be a unique 5 numerical digit combination.');
+      return;
+    }
   
-    this.afs.collection('Subjects').add(newSubject)
-      .then(() => {
-        console.log('Subject added successfully');
-        this.subjectName = '';
-        this.subjectCode = '';
+    // Check if the subject with the same code already exists
+    this.afs.collection('Subjects', ref => ref.where('code', '==', this.subjectCode))
+      .get()
+      .toPromise()
+      .then((querySnapshot) => {
+        if (querySnapshot && !querySnapshot.empty) {
+          console.error('Subject with the same code already exists');
+          // You might want to handle this case, e.g., show an error message
+        } else {
+          // Subject with the same code does not exist, proceed to add
+          const newSubject = { name: this.subjectName, code: this.subjectCode, college: this.college };
+  
+          this.afs.collection('Subjects').add(newSubject)
+            .then(() => {
+              console.log('Subject added successfully');
+              this.subjectName = '';
+              this.subjectCode = '';
+            })
+            .catch(error => {
+              console.error('Error adding subject:', error);
+            });
+        }
       })
       .catch(error => {
-        console.error('Error adding subject:', error);
+        console.error('Error checking for existing subject:', error);
       });
   }
+  
+  
 
   deleteSubject(subjectId: string): void {
     this.afs.collection('Subjects').doc(subjectId).delete()
@@ -85,9 +108,15 @@ export class EditSubjOffersComponent implements OnInit {
 
   openEditModal(subject: any): void {
     console.log("Opening modal for subject:", subject);
-    this.selectedSubjectForEdit = { ...subject };
+    this.selectedSubjectForEdit = { 
+      id: subject.value, 
+      name: subject.label,
+      code: subject.code,
+      college: subject.college
+    };
     this.showEditModal = true;
   }
+  
 
   onSubjectUpdate(updatedSubject: any): void {
     if (!updatedSubject) {

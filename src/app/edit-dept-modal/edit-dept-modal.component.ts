@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
@@ -10,16 +10,21 @@ export class EditDeptModalComponent {
   @Input() college: any;
   @Output() updateCollege = new EventEmitter<any>();
 
-  constructor(private afs: AngularFirestore) {}
+  constructor(private cdr: ChangeDetectorRef, private afs: AngularFirestore) {}
 
-  editCollege(collegeId: string, updatedName: string, updatedCode: string) {
-    this.afs.collection('Colleges').doc(collegeId).update({ CollegeName: updatedName, Abbreviation: updatedCode })
+  editCollege(): void {
+    console.log('Editing college:', this.college);
+    const { id, CollegeName, Abbreviation } = this.college;
+    this.afs.collection('Colleges').doc(id).update({ CollegeName, Abbreviation })
       .then(() => {
         console.log('College updated');
+        this.updateCollege.emit({ CollegeName, Abbreviation });
+        // Manually trigger change detection
+        this.cdr.detectChanges();
       })
       .catch(error => {
         console.error('Error: ', error);
-      })
+      });
   }
 
   closeModal(): void {
