@@ -12,7 +12,7 @@ export class EditSubjOffersComponent implements OnInit {
 
   subjectName = '';
   subjectCode = '';
-  selectedCollege = 'scs';
+  selectedCollege = '';
 
   subjects$!: Observable<any[]>;
   colleges$!: Observable<any[]>;

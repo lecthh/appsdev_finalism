@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { documentId } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -55,22 +56,5 @@ export class EditDepartmentsComponent implements OnInit {
         console.error('Error adding document: ', error);
       });
   }
-
-  showEditModal: boolean = false;
-  selectedDepartmentForEdit: any = null;
-
-  openEditModal(college: any): void {
-    console.log("Opening modal for department:", college);
-    this.selectedDepartmentForEdit = { ...college };
-    this.showEditModal = true;
-  }
-
-  onCollegeChange(updatedCollege: any): void {
-    if (!updatedCollege) {
-      this.showEditModal = false;
-      return;
-    }
-  }
-  
 
 }
