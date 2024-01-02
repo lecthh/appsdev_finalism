@@ -19,7 +19,6 @@ export class EditDeptModalComponent {
       })
       .catch(error => {
         console.error('Error: ', error);
-        console.log(collegeId);
       })
   }
 

@@ -105,15 +105,11 @@ export class AddStudentComponent implements OnInit {
       .catch((error) => {
         console.log('Registration error: ', error.message);
 
-        // Handle specific error cases and show appropriate messages
         if (error.code === 'auth/email-already-in-use') {
-          // Email is already in use
           alert('Email is already in use. Please use a different email.');
         } else if (error.code === 'auth/invalid-email' || error.code === 'auth/argument-error') {
-          // Invalid email format
           alert('Invalid email format. Please enter a valid email.');
         } else {
-          // Generic error message for other cases
           alert('An error occurred during registration. Please try again.');
         }
       });
