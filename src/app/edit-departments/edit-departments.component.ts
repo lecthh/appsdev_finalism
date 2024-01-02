@@ -55,4 +55,22 @@ export class EditDepartmentsComponent implements OnInit {
         console.error('Error adding document: ', error);
       });
   }
+
+  showEditModal: boolean = false;
+  selectedDepartmentForEdit: any = null;
+
+  openEditModal(college: any): void {
+    console.log("Opening modal for department:", college);
+    this.selectedDepartmentForEdit = { ...college };
+    this.showEditModal = true;
+  }
+
+  onCollegeChange(updatedCollege: any): void {
+    if (!updatedCollege) {
+      this.showEditModal = false;
+      return;
+    }
+  }
+  
+
 }
