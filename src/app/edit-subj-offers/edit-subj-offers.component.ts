@@ -1,31 +1,56 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Component({
   selector: 'app-edit-subj-offers',
   templateUrl: './edit-subj-offers.component.html',
   styleUrls: ['./edit-subj-offers.component.css']
 })
-
 export class EditSubjOffersComponent implements OnInit {
 
   subjectName = '';
   subjectCode = '';
-  selectedCollege = 'scs';
+  college = '';
 
-  subjects$!: Observable<any[]>;
-  colleges$!: Observable<any[]>;
+  subjects!: Observable<any[]>;
+  colleges!: Observable<any[]>;
 
   constructor(private afs: AngularFirestore) {}
 
   ngOnInit(): void {
-    this.colleges$ = this.afs.collection('Colleges').valueChanges({ idField: 'value' });
-    this.fetchSubjects();
+    this.colleges = this.fetchColleges();
+    
   }
 
+  fetchColleges(): Observable<any[]> {
+    return this.afs.collection('Colleges').snapshotChanges().pipe(
+      map((colleges: any[]) => {
+        return colleges.map(college => ({
+          value: college.payload.doc.data()['CollegeName'], 
+          label: college.payload.doc.data()['CollegeName']
+        }));
+      })
+    );
+  }
+
+  fetchSubjects(collegeDocument: string): Observable<any[]> {
+    console.log('Fetching subjects for college:', collegeDocument);
+    return this.afs.collection('Subjects', ref => ref.where('college', '==', collegeDocument))
+      .snapshotChanges().pipe(
+        map((subjects: any[]) => {
+          return subjects.map(subject => ({
+            value: subject.payload.doc.id, 
+            label: subject.payload.doc.data()['name'], 
+            code: subject.payload.doc.data()['code'], 
+          }));
+        })
+      );
+  }
+  
+
   addSubject(): void {
-    const newSubject = { name: this.subjectName, code: this.subjectCode, college: this.selectedCollege };
+    const newSubject = { name: this.subjectName, code: this.subjectCode, college: this.college };
   
     this.afs.collection('Subjects').add(newSubject)
       .then(() => {
@@ -48,12 +73,11 @@ export class EditSubjOffersComponent implements OnInit {
       });
   }
 
-  fetchSubjects(): void {
-    this.subjects$ = this.afs.collection('Subjects', ref => ref.where('college', '==', this.selectedCollege)).valueChanges({ idField: 'id' });
-  }  
-
-  onCollegeChange(): void {
-    this.fetchSubjects();
+  onCollegeSelected(): void {
+    console.log('onCollegeSelected called');
+    if (this.college) {
+      this.subjects = this.fetchSubjects(this.college);
+    }
   }
 
   showEditModal: boolean = false;
