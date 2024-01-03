@@ -47,6 +47,7 @@ export class EditSubjOffersComponent implements OnInit {
         })
       );
   }
+  //test push
   
   addSubject(): void {
     // Check if the subjectCode is exactly 5 digits
