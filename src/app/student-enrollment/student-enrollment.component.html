@@ -79,70 +79,75 @@
        </div>
  
        <div class="grid grid-cols-1 mt-7">
-            <div class="py-3">
-                <h1 class="font-bold text-xl">Enrollment</h1>
-                <p>Select subjects to enroll for this semester</p>
-            </div>
-            
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
-                    <thead class="text-xs text-zinc-50 uppercase bg-red-500">
-                        <tr>
-                            <th scope="col" class="p-4">
-                                <div class="flex items-center">
-                                    <input id="" type="checkbox" class="w-4 h-4 bg-gray-100 border-red-500 rounded">
-                                    <label for="" class="sr-only">checkbox</label>
-                                </div>
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Offer Code
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Descriptive Title
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Subject No.
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Units
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b hover:bg-gray-200">
-                            <td class="w-4 p-4">
-                                <div class="flex items-center">
-                                    <input type="checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded">
-                                    <label class="sr-only">checkbox</label>
-                                </div>
-                            </td>
-                            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
-                                1930
-                            </th>
-                            <td class="px-6 py-4 text-slate-800">
-                                11101
-                            </td>
-                            <td class="px-6 py-4 text-slate-800">
-                                Networking 2
-                            </td>
-                            <td class="px-6 py-4 text-slate-800">
-                                17.00
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+         <div class="py-3">
+           <h1 class="font-bold text-xl">Enrollment</h1>
+           <p>Select subjects to enroll for this semester</p>
+         </div>
+                   
+         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+           <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+             <thead class="text-xs text-zinc-50 uppercase bg-red-500">
+               <tr>
+                 <th scope="col" class="p-4">
+                   <div class="flex items-center">
+                     <input id="" type="text" class="w-4 h-4 bg-red-500 border-red-500 rounded">
+                     <label for="" class="sr-only">checkbox</label>
+                   </div>
+                 </th>
+                 <th scope="col" class="px-6 py-3">
+                   Offer Code
+                 </th>
+                 <th scope="col" class="px-6 py-3">
+                   Subject No.
+                 </th>
+                 <th scope="col" class="px-6 py-3">
+                  Descriptive Title
+                </th>
+                 <th scope="col" class="px-6 py-3">
+                   Units
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor="let subject of subjects" class="bg-white border-b hover:bg-gray-200">
+                  <td class="w-4 p-4">
+                     <div class="flex items-center">
+                       <input type="checkbox" class="w-4 h-4 bg-gray-100 border-gray-300 rounded" 
+                              [checked]="checkboxStates[subject.id]"
+                              (change)="handleCheckboxChange(subject, $event)">
+                       <label class="sr-only">checkbox</label>
+                     </div>
+                   </td>
+                 <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap">
+                   {{ subject.offerCode }}
+                 </th>
+                 <td class="px-6 py-4 text-slate-800">
+                  {{ subject.subjectNumber }}
+                </td>
+                 <td class="px-6 py-4 text-slate-800">
+                   {{ subject.descriptiveTitle }}
+                 </td>
+
+                 <td class="px-6 py-4 text-slate-800">
+                  {{ subject.units.toFixed(1)}}
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
        </div>
+       
 
        <div class="py-2 mt-7 grid-cols-2">
             <div class="pb-4">
-                <p>Available units: 24</p>
-                <p>Course: Dummy course</p>
+                <p>Checked Units: {{currentUnits}}</p>
+                <p>Allowed Units: {{maxUnits}}</p>
+                <p>Course: {{course}}</p>
             </div>
             
             <div class="mb-4">
-                <button class="bg-red-500 hover:bg-red-700 rounded-sm px-5 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase">Enroll</button>
-            </div>
+               <button class="bg-red-500 hover:bg-red-700 rounded-sm px-5 py-2 text-gray-100 hover:shadow-xl transition duration-150 uppercase" (click)="enrollSubjects()">Enroll</button>
+             </div>
        </div>
  
  

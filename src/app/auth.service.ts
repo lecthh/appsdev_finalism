@@ -24,8 +24,15 @@ export class AuthService {
       })
     );
   }
-  
-  //authentication tings
+
+  getUid(): Observable<string> {
+    return this.afAuth.authState.pipe(
+      map(user => {
+        return user?.uid || 'document id';
+      })
+    );
+  }
+
   signIn(email: string, password: string): Promise<void> {
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(userCredential => {
@@ -53,31 +60,6 @@ export class AuthService {
       });
   }
   
-  
-
-  signUp(email: string, password: string, additionalData: any): Promise<void> {
-    return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        // Update the user's profile
-        const user = userCredential.user;
-        if (user) {
-          return user.updateProfile({
-            displayName: additionalData.displayName
-          }).then(() => {
-            return this.afs.collection('users').doc(user.uid).set(additionalData);
-          });
-        } else {
-          throw new Error("User not found after sign-up");
-        }
-      })
-      .then(() => {
-        console.log("Student registered:", this.afAuth.currentUser);
-        this.router.navigate(['/signin']);
-      })
-      .catch((error) => {
-        console.error('Registration error:', error.message);
-      });
-  }
   
   signOut(): void {
     this.afAuth.signOut().then(() => {

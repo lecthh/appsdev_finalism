@@ -100,7 +100,15 @@ export class SignupComponent implements OnInit {
         return user.updateProfile({
           displayName: `${this.firstName} ${this.lastName}`
         }).then(() => {
-          return this.afs.collection('users').doc(user.uid).set(addtlData);
+          return this.afs.collection('users').doc(user.uid).set({
+            displayName: addtlData.displayName,
+            email: addtlData.email,
+            college: addtlData.college, 
+            password: addtlData.password,
+            program: addtlData.program,
+            studentNumber: addtlData.studentNumber,
+            yearLevel: addtlData.yearLevel
+          });
         });
       } else {
         throw new Error("User not found after sign-up");

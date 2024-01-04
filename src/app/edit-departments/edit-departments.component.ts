@@ -60,7 +60,7 @@ export class EditDepartmentsComponent implements OnInit {
 
     this.firestore.collection('Colleges').doc(documentId).set(newCollege)
       .then(() => {
-        alert('Document successfully added!');
+        alert('College successfully added!');
       })
       .catch((error) => {
         console.error('Error adding document: ', error);

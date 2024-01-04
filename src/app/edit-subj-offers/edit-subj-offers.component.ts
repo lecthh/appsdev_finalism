@@ -52,7 +52,7 @@ export class EditSubjOffersComponent implements OnInit {
   addSubject(): void {
     // Check if the subjectCode is exactly 5 digits
     if (!/^\d{5}$/.test(this.subjectCode)) {
-      // Alert the user that the code must be 5 digits
+      // Alert the user that the code must be 5 digit
       alert('Offer Code must be a unique 5 numerical digit combination.');
       return;
     }
@@ -63,7 +63,7 @@ export class EditSubjOffersComponent implements OnInit {
       .toPromise()
       .then((querySnapshot) => {
         if (querySnapshot && !querySnapshot.empty) {
-          console.error('Subject with the same code already exists');
+          alert('Subject with the same code already exists');
           // You might want to handle this case, e.g., show an error message
         } else {
           // Subject with the same code does not exist, proceed to add
@@ -71,7 +71,7 @@ export class EditSubjOffersComponent implements OnInit {
   
           this.afs.collection('Subjects').add(newSubject)
             .then(() => {
-              console.log('Subject added successfully');
+              alert('Subject added successfully');
               this.subjectName = '';
               this.subjectCode = '';
             })

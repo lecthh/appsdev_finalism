@@ -21,7 +21,7 @@ interface ProgramData {
 })
 export class AddStudentComponent implements OnInit {
   email = '';
-  password = '*temp_12345';
+  password = '';
   firstName = '';
   lastName = '';
   studentNumber = '';
@@ -83,35 +83,60 @@ export class AddStudentComponent implements OnInit {
   }
 
   addStudent(): void {
+    console.log("add is working")
     const addtlData = {
       displayName: `${this.firstName} ${this.lastName}`,
       studentNumber: this.studentNumber,
       email: this.email,
-      password: '*temp_12345',
+      password: 'temp123',
       yearLevel: this.yearLevel,
       college: this.college,
-      program: this.program
+      program: this.program,
+      isAdmin: this.isAdmin
     };
 
-    this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-
-        return this.afs.collection('users').doc(user?.uid).set(addtlData);
-      })
-      .then(() => {
-        console.log("Student registered: ", this.afAuth.currentUser);
-      })
-      .catch((error) => {
-        console.log('Registration error: ', error.message);
-
-        if (error.code === 'auth/email-already-in-use') {
-          alert('Email is already in use. Please use a different email.');
-        } else if (error.code === 'auth/invalid-email' || error.code === 'auth/argument-error') {
-          alert('Invalid email format. Please enter a valid email.');
-        } else {
-          alert('An error occurred during registration. Please try again.');
-        }
-      });
+    this.afAuth.createUserWithEmailAndPassword(this.email, addtlData.password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      if (user) {
+        return user.updateProfile({
+          displayName: `${this.firstName} ${this.lastName}`
+        }).then(() => {
+          return this.afs.collection('users').doc(user.uid).set({
+            displayName: addtlData.displayName,
+            email: addtlData.email,
+            college: addtlData.college, 
+            password: addtlData.password,
+            program: addtlData.program,
+            studentNumber: addtlData.studentNumber,
+            yearLevel: addtlData.yearLevel
+          });
+        });
+      } else {
+        throw new Error("User not found after sign-up");
+      }
+    })
+    .then(() => {
+      console.log("Student registered:", this.afAuth.currentUser);
+      alert('Student successfully added to database');
+    })
+    .catch((error) => {
+      console.error('Registration error:', error);
+    
+      // Log the detailed error message from Firebase
+      console.log('Firebase Error Message:', error.message);
+    
+      // Handle specific error codes if needed
+      if (error.code === 'auth/email-already-in-use') {
+        alert('The email address is already in use by another account.');
+      } else if (error.code === 'auth/weak-password') {
+        alert('The password is too weak.');
+      } else if (error.code === 'auth/invalid-email') {
+        alert('The email address is invalid.');
+      } else {
+        alert('An error occurred during registration. Please try again.');
+      }
+    });
+    
   }
 }
