@@ -1,9 +1,11 @@
-// dashboard.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+interface UserDocument {
+  enrolledTo?: string[];
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +15,11 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   userName$!: Observable<string>;
   displayNameFirstHalf: string = '';
+  enrolledSubjectsCount: number = 0;
+  totalUnits: number = 0;
+  router: any;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private afs: AngularFirestore) {}
 
   ngOnInit(): void {
     this.userName$ = this.authService.getCurrentUserName();
@@ -27,11 +32,22 @@ export class DashboardComponent implements OnInit {
         }
       }
     });
+
+    // Get the current user's enrolled subjects
+    this.authService.getUid().subscribe(currentID => {
+      this.afs.collection('users').doc<UserDocument>(currentID).get().subscribe(userDoc => {
+        const enrolledSubjects: string[] = userDoc.data()?.enrolledTo || [];
+        this.enrolledSubjectsCount = enrolledSubjects.length;
+
+        // Calculate total units based on enrolled subjects (assuming each subject is 3 units)
+        this.totalUnits = this.enrolledSubjectsCount * 3;
+      });
+    });
   }
+
+  // ... (existing code)
 
   goToProspectus(): void {
     this.router.navigate(['/student-prospectus']);
   }
-
-  
 }
